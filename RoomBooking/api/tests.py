@@ -102,11 +102,11 @@ class TestCasebooking(APITestCase):
 
         #- The business can delete a room if said room does not have any events.
         self.setup_user("admin4", "b4@b.com", True)
-        delete_room = self.client.delete(f'/api/room/1/')
+        delete_room = self.client.delete('/api/room/1/')
         #- Cant delete room with events
         self.assertEqual(delete_room.data, {"Message": "Error"})
         room = self.client.post('/api/room/', data)
-        delete_room = self.client.delete(f'/api/room/2/')
+        delete_room = self.client.delete('/api/room/2/')
         #- Can delete room without events
         self.assertEqual(delete_room.data, {"Message": "Okay"})
 
